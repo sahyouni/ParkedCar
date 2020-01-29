@@ -1,16 +1,8 @@
 
-/**
- * ParkedCar Info.
- *
- * @author (cherry cui)
- * @version (20200127)
- */
-
 import java.util.Calendar;
 
 public class ParkedCar {
 
-    // instance variables
     private String ownerName;
     private String carMake;
     private int modelYear;
@@ -18,19 +10,9 @@ public class ParkedCar {
     private int minutesParked;
     private int currentYear = Calendar.getInstance().get(Calendar.YEAR);
 
-    /**
-     * Parameterized Constructor for objects of class ParkedCar
-     * 
-     * @param inputOwnerName               is Owner name
-     * @param inputCarMake               is Car make
-     * @param inputModelYear          is Car model year
-     * @param inputLicensePlateNumber is Car license plate number
-     * @param inputMinutesParked      is Number of minutes parked
-     */
     public ParkedCar(String inputOwnerName, String inputCarMake, int inputModelYear,
      String inputLicensePlateNumber, int inputMinutesParked) {
 
-        // validate instance variables
         if (inputOwnerName == null) { throw new IllegalArgumentException("owner name cannot be null"); } 
         if (inputCarMake == null) { throw new IllegalArgumentException("car make cannot be null"); } 
         if (inputModelYear < 1900) { throw new IllegalArgumentException("year model cannot be earlier than 1900"); } 
@@ -45,16 +27,6 @@ public class ParkedCar {
         minutesParked = inputMinutesParked;
     }
 
-    /**
-     * Method - Display Details
-     *
-     * @param inputName               is Owner name
-     * @param inputMake               is Car make
-     * @param inputModelYear          is Car model year
-     * @param inputLicensePlateNumber is Car license plate number
-     * @param inputMinutesParked      is Number of minutes parked
-     * 
-     */
     public void displayDetails() {
         System.out.println(ownerName);
         System.out.println(carMake);
