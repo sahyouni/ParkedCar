@@ -1,97 +1,198 @@
 
+/**
+ * ParkedCar Info.
+ *
+ * @author (cherry cui)
+ * @version (20200202)
+ */
+
 import java.util.Calendar;
-
-public class ParkedCar {
-
+public class ParkedCar
+{
+    // instance variables 
     private String ownerName;
     private String carMake;
     private int modelYear;
     private String carLicensePlateNumber;
-    private int minutesParked;
+    private int numberOfMinutesParked;
     private int currentYear = Calendar.getInstance().get(Calendar.YEAR);
 
-    private void ThrowIfNull(String valueToValidate, String errorMessage) {
-        if (valueToValidate == null)
-            throw new IllegalArgumentException(errorMessage);
+    /**
+     * Parameterized Constructor for objects of class ParkedCar
+     * @param  inputName to set Owner name
+     * @param inputMake to set Car make
+     * @param inputModelYear to set Car model year
+     * @param inputLicensePlateNumber to set license plate number
+     * @param inputMinutesParked to set Number of minutes parked
+     */
+    public ParkedCar(String inputName, String inputMake, int inputModelYear, String inputLicensePlateNumber, int inputMinutesParked)
+    {
+        // validate instance variables
+         if(inputName != null){
+            ownerName = inputName;
+            } else {
+            throw new IllegalArgumentException ("owner name cannot be null");
+            }
+            
+            if(inputMake != null){
+            carMake = inputMake;
+            } else {
+            throw new IllegalArgumentException ("car make cannot be null");
+            }
+            
+             if(inputMake != null){
+            carMake = inputMake;
+            } else {
+            throw new IllegalArgumentException ("car make cannot be null");
+            }
+            
+             if(inputModelYear < 1900){
+                 throw new IllegalArgumentException ("year model cannot be earlier than 1900");
+                }
+             else {
+                 if (inputModelYear > currentYear){
+                    throw new IllegalArgumentException ("year model cannot be later than current year");
+                    }
+                 else {
+                    modelYear = inputModelYear;
+                    }
+             }
+             
+             if(inputLicensePlateNumber != null){
+            carLicensePlateNumber = inputLicensePlateNumber;
+            } else {
+            throw new IllegalArgumentException ("car license plate number cannot be null");
+            }
+            
+             if(inputMinutesParked > 0){
+            numberOfMinutesParked = inputMinutesParked;
+            } else {
+            throw new IllegalArgumentException ("minutes parked should be greater than 0");
+            }
+        
     }
-
-    public String GetOwnerName() {
-        return ownerName;
+    
+    /**
+     * Method - getOwnerName
+     * @return the owner name value
+     */
+    public String getOwnerName(){
+           return ownerName;
     }
-
-    public void SetOwnerName(String value){
-        ThrowIfNull(value, "owner name cannot be null");
-        ownerName = value;
+    
+    /**
+     * Method - getCarMake
+     * @return the car make value
+     */
+    public String getCarMake(){
+           return carMake;
     }
-
-    public String GetCarMake() {
-        return carMake;
+    
+    /**
+     * Method - getModelYear
+     * @return the model year value
+     */
+    public int getModelYear(){
+           return modelYear;
     }
-
-    public void SetCarMake(String value) {
-        ThrowIfNull(value, "car make cannot be null");
-        carMake = value;
+    
+    /**
+     * Method - getCarLicensePlateNumber
+     * @return the car license plate number value
+     */
+    public String getCarLicensePlateNumber(){
+           return carLicensePlateNumber;
     }
-
-    public int GetModelYear() {
-        return modelYear;
+    
+    /**
+     * Method - getCarLicensePlateNumber
+     * @return the car license plate number value
+     */
+    public int getNumberOfMinutesParked(){
+           return numberOfMinutesParked;
     }
-
-    public void SetModelYear(int value){
-        if(value <1900)
-        throw new IllegalArgumentException("year model cannot be earlier than 1900");
-
-        if(value > currentYear)
-        throw new IllegalArgumentException("year model cannot be later than 2020");
-
-        modelYear = value;
+    
+    /**
+     * Method - setOwnerName
+     * @param inputName A parameter to set owner name value
+     */
+    public void setOwnerName(String inputName){
+           if(inputName != null){
+              ownerName = inputName;
+            } else {
+              throw new IllegalArgumentException ("owner name cannot be null");
+            };
     }
-
-    public String GetLicensePlateNumber() {
-        return carLicensePlateNumber;
+    
+    /**
+     * Method - setCarMake
+     * @param inputMake A parameter to set car make value
+     */
+    public void setCarMake(String inputMake){
+           if(inputMake != null){
+              carMake = inputMake;
+            } else {
+              throw new IllegalArgumentException ("car make cannot be null");
+            };
     }
-    public void SetLicensePlateNumber(String value){
-        ThrowIfNull(value, "car license plate number cannot be null");
-        carLicensePlateNumber = value;
+    
+    /**
+     * Method - setModelYear
+     * @param inputYear A parameter to set car model year value
+     */
+    public void setModelYear(int inputModelYear){
+           if(inputModelYear < 1900){
+                 throw new IllegalArgumentException ("year model cannot be earlier than 1900");
+                }
+             else {
+                 if (inputModelYear > currentYear){
+                    throw new IllegalArgumentException ("year model cannot be later than current year");
+                    }
+                 else {
+                    modelYear = inputModelYear;
+                    }
     }
-
-    public ParkedCar(String inputOwnerName, String inputCarMake, int inputModelYear, String inputLicensePlateNumber,
-            int inputMinutesParked) {
-
-        ThrowIfNull(inputOwnerName, "owner name cannot be null");
-        ThrowIfNull(inputCarMake, "car make cannot be null");
-        ThrowIfNull(inputLicensePlateNumber, "car license plate number cannot be null");
-
-        if (inputModelYear < 1900) {
-            throw new IllegalArgumentException("year model cannot be earlier than 1900");
-        }
-        if (inputModelYear > currentYear) {
-            throw new IllegalArgumentException("year model cannot be later than 2020");
-        }
-      
-        if (inputMinutesParked <= 0) {
-            throw new IllegalArgumentException("minutes parked should be greater than 0");
-        }
-
-        ownerName = inputOwnerName;
-        carMake = inputCarMake;
-        modelYear = inputModelYear;
-        carLicensePlateNumber = inputLicensePlateNumber;
-        minutesParked = inputMinutesParked;
+}
+    /**
+     * Method - setCarLicensePlateNumber
+     * @param inputLicensePlateNumber A parameter to set car license plate number value
+     */
+    public void setCarLicensePlateNumber(String inputLicensePlateNumber){
+           if(inputLicensePlateNumber != null){
+              carLicensePlateNumber = inputLicensePlateNumber;
+            } else {
+              throw new IllegalArgumentException ("car license plate number cannot be null");
+            };
     }
-
-    public void displayDetails() {
-        System.out.println("------------");
-
-        System.out.println(ownerName);
-        System.out.println(carMake);
-        System.out.println(modelYear);
-        System.out.println(carLicensePlateNumber);
-        System.out.println(minutesParked);
-        System.out.println(currentYear);
-
-        System.out.println("------------");
-
-
+    
+    /**
+     * Method - setNumberOfMinutesParked
+     * @param inputMinutesParked A parameter to set number of minutes parked value
+     */
+    public void setNumberOfMinutesParked(int inputMinutesParked){
+           if(inputMinutesParked > 0){
+              numberOfMinutesParked = inputMinutesParked;
+            } else {
+              throw new IllegalArgumentException ("number of minutes parked should be greater than 0");
+            };
     }
+    
+    /**
+     * Method - Display Details to display car parking details
+     *
+     * @param inputName is Owner name
+     * @param inputMake is Car make
+     * @param inputModelYear is Car model year
+     * @param inputLicensePlateNumber is Car license plate number
+     * @param inputMinutesParked is Number of minutes parked
+     * 
+     */
+    public void displayDetails(){
+        System.out.println("Owner name: " + ownerName);
+        System.out.println ("Car make: " + carMake);
+        System.out.println ("Model year: " + modelYear);
+        System.out.println ("Car license plate number: " + carLicensePlateNumber);
+        System.out.println ("Number of minutes parked: " + numberOfMinutesParked);
+    
+}
 }
