@@ -20,6 +20,8 @@ class QuickStart {
 
         System.out.println("-----total number of sold books:" + BookClub.totalNumberOfSoldBooks + "---------");
 
+        BookClub samsWorkOutRoutine = new BookClub("Build a six pack in two hours", 5);
+        PrintDetails(samsWorkOutRoutine);
     }
 
     private static void PrintDetails(BookClub bookClub) {
